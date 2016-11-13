@@ -1,0 +1,15 @@
+<div class="container" >
+  <%= form_for @user do |f| %>
+  <%= f.label :money %>
+  <%= f.text_field :money %>
+  <%= f.submit :OK %>
+  <% end %>
+  <% if current_user.app.nil? %>
+    <%=  link_to "create_app", new_app_path %>
+  <% else %>
+    <h2>App Info</h2>
+    <div>Name: <%= current_user.app.name %></div>
+    <div>Url: <%= current_user.app.url %></div>
+    <div>Token: <%= current_user.token %></div>
+  <% end %>
+</div>

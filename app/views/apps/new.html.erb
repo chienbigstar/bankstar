@@ -1,0 +1,13 @@
+<%= form_for @app do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  <br>
+  <%= f.label :token %>
+  <%= f.text_field :token, value: current_user.token, disabled: true %>
+  <br>
+  <%= f.submit :OK %>
+<% end %>

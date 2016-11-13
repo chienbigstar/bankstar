@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Banking</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="col-md-8 col-md-offset-2">
+      <%= link_to :Logout, destroy_user_session_path, method: :delete %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

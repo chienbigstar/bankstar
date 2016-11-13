@@ -1,0 +1,5 @@
+<%= form_for @payment do |f| %>
+  <%= f.hidden_field :order_id, value: @order.id %>
+  <%= f.label @order.money %>
+  <%= f.submit %>
+<% end %>
