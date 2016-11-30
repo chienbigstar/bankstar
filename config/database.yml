@@ -11,10 +11,10 @@
 #
 default: &default
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   pool: 5
-  username: root
-  password: 123456
+  username: chienbigstar
+  password: tklmc2mt
   socket: /var/run/mysqld/mysqld.sock
 
 development:
