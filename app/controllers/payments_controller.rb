@@ -23,7 +23,7 @@ class PaymentsController < ApplicationController
   end
 
   def reply_link
-    uri = URI('http://localhost:3000/payments/update')
+    uri = URI current_user.app.url
     params = {token: @order.private_token}
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
