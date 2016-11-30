@@ -29,6 +29,10 @@ gem "devise"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "mysql2", ">= 0.3.18", "< 0.5"
 
+group :production do
+  gem 'pg'
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
