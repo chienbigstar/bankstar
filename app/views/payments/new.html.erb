@@ -1,5 +1,13 @@
 <%= form_for @payment do |f| %>
   <%= f.hidden_field :order_id, value: @order.id %>
-  <%= f.label @order.money %>
-  <%= f.submit %>
+  <div>
+    <h1 class="w">Your money <span class="label label-success">
+      <%= current_user.money %>$</span></h1>
+  </div>
+  <div>
+    <h1 class="w">Paid money <span class="label label-success">
+    <%= @order.money %>$</span></h1>
+  </div>
+  <br>
+  <%= f.submit :OK, :class => "btn btn-success" %>
 <% end %>

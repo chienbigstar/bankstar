@@ -2,18 +2,18 @@
   <div class="col-md-4 col-md-offset-2">
     <%= form_for @app do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.label :name %>
+      <%= f.label :name, class: :label %>
       <%= f.text_field :name, class: "form-control" %>
       <br>
-      <%= f.label :url %>
+      <%= f.label :url, class: :label %>
       <%= f.text_field :url, class: "form-control" %>
       <br>
-      <%= f.label :reply_url %>
+      <%= f.label :reply_url, class: :label %>
       <%= f.text_field :reply_url, class: "form-control" %>
       <br>
-      <%= f.label :token %>
+      <%= f.label :token, class: :label %>
       <%= f.text_field :token, value: current_user.token, disabled: true,
-        class: "form-control" %>
+                       class: "form-control" %>
       <br>
       <%= f.label :OK, id: "create_app", class: "btn btn-primary" %>
       <div class="loader"></div>

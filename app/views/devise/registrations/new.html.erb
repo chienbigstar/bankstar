@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <h2><%= t "view.register" %></h2>
-
       <%= form_for resource, as: resource_name, url: registration_path(resource_name),
         html: {class: "form-horizontal"} do |f| %>
         <%= devise_error_messages! %>

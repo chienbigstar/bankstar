@@ -13,19 +13,23 @@ class PaymentsController < ApplicationController
     @order = Order.find_by_id payment_params[:order_id]
     if @order
       if @order.done?
-        render html: "already payment"
+        @notify = "Already payyed"
+        render "alert"
         return
       end
       new_money = current_user.money.to_i - @order.money.to_i
       if new_money < 0
-        render html: "not enough money"
+        @notify = "not enough money"
+        render "alert"
         return
       end
       current_user.update_attribute :money, new_money
       reply_link
-      render html: :ok
+      @notify = "OK"
+      render "alert"
     else
-      render html: :wrong
+      @notify = "wrong"
+      render "alert"
     end
   end
 
