@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    @user_app = User.find_by token: params[:authen_token]
+    @user_app = User.find_by token: params[:authenticity_token]
     if @user_app
       @order = Order.find_by_id payment_params[:order_id]
       new_money = current_user.money.to_i - @order.money.to_i
