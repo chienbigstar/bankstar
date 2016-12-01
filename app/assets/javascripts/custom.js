@@ -6,6 +6,7 @@ $(document).on("turbolinks:load", function(){
     $(this).attr("disabled", "disabled");
     $url = $('input[name="app[url]"]').val();
     if($url == ""){
+      $('.loader').hide();
       alert("not have url");
       return;
     }
