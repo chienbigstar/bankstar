@@ -10,14 +10,14 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    if @user_app
-      @order = Order.find_by_id payment_params[:order_id]
+    @order = Order.find_by_id payment_params[:order_id]
+    if @order
       new_money = current_user.money.to_i - @order.money.to_i
       current_user.update_attribute :money, new_money
       reply_link
       render html: :ok
     else
-      render html: :wrong!
+      render html: :wrong
     end
   end
 
