@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.string :public_token
       t.string :private_token
       t.string :money
+      t.integer :status
       t.timestamps
     end
   end

@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_one :payment
+  enum status: [:done, :not]
 end

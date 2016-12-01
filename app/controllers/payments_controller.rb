@@ -12,7 +12,15 @@ class PaymentsController < ApplicationController
   def create
     @order = Order.find_by_id payment_params[:order_id]
     if @order
-      new_money = current_user.money.to_i - @order.money.to_i
+      if @order.done?
+        render html: "already payment"
+        return
+      end
+      new_money = current_user.money.to_i < order.money.to_i
+      if new_money < 0
+        render html: "not enough money"
+        return
+      end
       current_user.update_attribute :money, new_money
       reply_link
       render html: :ok
