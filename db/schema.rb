@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113060717) do
+ActiveRecord::Schema.define(version: 20161201094209) do
 
   create_table "apps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -27,19 +27,15 @@ ActiveRecord::Schema.define(version: 20161113060717) do
     t.string   "public_token"
     t.string   "private_token"
     t.string   "money"
+    t.integer  "status"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "order_id"
-    t.integer  "user_id"
-    t.integer  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_payments_on_order_id", using: :btree
-    t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
         render html: "already payment"
         return
       end
-      new_money = current_user.money.to_i < order.money.to_i
+      new_money = current_user.money.to_i - @order.money.to_i
       if new_money < 0
         render html: "not enough money"
         return
