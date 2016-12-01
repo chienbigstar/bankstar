@@ -10,7 +10,6 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    @user_app = User.find_by token: params[:authenticity_token]
     if @user_app
       @order = Order.find_by_id payment_params[:order_id]
       new_money = current_user.money.to_i - @order.money.to_i
@@ -28,7 +27,7 @@ class PaymentsController < ApplicationController
   end
 
   def reply_link
-    uri = URI @user_app.app.reply_url
+    uri = URI @order.user.app.reply_url
     params = {token: @order.private_token}
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
