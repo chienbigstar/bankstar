@@ -10,11 +10,16 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    @order = Order.find_by_id payment_params[:order_id]
-    new_money = current_user.money.to_i - @order.money.to_i
-    current_user.update_attribute :money, new_money
-    reply_link
-    render html: :ok
+    @user_app = User.find_by authen_token: params[:authen_token]
+    if @user_app
+      @order = Order.find_by_id payment_params[:order_id]
+      new_money = current_user.money.to_i - @order.money.to_i
+      current_user.update_attribute :money, new_money
+      reply_link
+      render html: :ok
+    else
+      render html: :wrong!
+    end
   end
 
   private
@@ -23,7 +28,7 @@ class PaymentsController < ApplicationController
   end
 
   def reply_link
-    uri = URI current_user.app.reply_url
+    uri = URI @user_app.app.reply_url
     params = {token: @order.private_token}
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
