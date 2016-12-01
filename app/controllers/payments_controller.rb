@@ -27,6 +27,5 @@ class PaymentsController < ApplicationController
     params = {token: @order.private_token}
     uri.query = URI.encode_www_form(params)
     res = Net::HTTP.get_response(uri)
-    # puts res.body if res.is_a?(Net::HTTPSuccess)
   end
 end

@@ -10,8 +10,18 @@ class AppsController < ApplicationController
     redirect_to current_user
   end
 
+  def edit
+    @app = App.find params[:id]
+  end
+
+  def update
+    @app = App.find params[:id]
+    @app.update app_params
+    redirect_to current_user
+  end
+
   private
   def app_params
-    params.required(:app).permit :user_id, :name, :url
+    params.required(:app).permit :user_id, :name, :url, :token
   end
 end

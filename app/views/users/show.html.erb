@@ -1,15 +1,20 @@
 <div class="container" >
-  <%= form_for @user do |f| %>
-  <%= f.label :money %>
-  <%= f.text_field :money %>
-  <%= f.submit :OK %>
-  <% end %>
-  <% if current_user.app.nil? %>
-    <%=  link_to "create_app", new_app_path %>
-  <% else %>
-    <h2>App Info</h2>
-    <div>Name: <%= current_user.app.name %></div>
-    <div>Url: <%= current_user.app.url %></div>
-    <div>Token: <%= current_user.token %></div>
-  <% end %>
+  <div class="col-md-4 col-md-offset-2">
+    <%= form_for @user do |f| %>
+    <%= f.label "money($)" %>
+    <%= f.text_field :money, class: "form-control" %>
+    <%= f.submit :OK, class: "btn btn-primary" %>
+    <% end %>
+    <% if current_user.app.nil? %>
+      <%=  link_to "Create app", new_app_path, class: "btn btn-info" %>
+    <% else %>
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-success"><h2>App Info</h2></li>
+        <li class="list-group-item list-group-item-info">Name: <%= current_user.app.name %></li>
+        <li class="list-group-item list-group-item-info">Url: <%= current_user.app.url %></li>
+        <li class="list-group-item list-group-item-info">Token: <%= current_user.token %></li>
+      </ul>
+      <%=  link_to "Edit app", edit_app_path(@user.app), class: "btn btn-info" %>
+    <% end %>
+  </div>
 </div>

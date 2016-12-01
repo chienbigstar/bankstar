@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  login: Login
+  signup: Signup
+  edit_app: Edit app
