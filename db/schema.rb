@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20161113060717) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "url"
+    t.string   "reply_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_apps_on_user_id", using: :btree

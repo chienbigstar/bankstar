@@ -4,6 +4,7 @@ class CreateApps < ActiveRecord::Migration[5.0]
       t.references :user
       t.string :name
       t.string :url
+      t.string :reply_url
       t.timestamps
     end
   end

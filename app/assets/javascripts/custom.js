@@ -1,9 +1,14 @@
-$(document).on("ready", function(){
+$(document).on("turbolinks:load", function(){
   $('.loader').hide();
   $("#create_app").click(function(){
+    $current = this;
     $('.loader').show();
     $(this).attr("disabled", "disabled");
     $url = $('input[name="app[url]"]').val();
+    if($url == ""){
+      alert("not have url");
+      return;
+    }
     $token = $('input[name="app[token]"]').val();
 
     $.ajaxPrefilter( function (options) {
@@ -14,7 +19,7 @@ $(document).on("ready", function(){
     $.ajax({
         url: $url,
         success: function(data) {
-          $(this).attr("disabled", "none");
+          $($current).attr("disabled", "none");
           $meta = data.split($token);
           $('.loader').hide();
           if($meta.length >1)
@@ -23,7 +28,7 @@ $(document).on("ready", function(){
         },
         error: function() {
           $('.loader').hide();
-          $(this).attr("disabled", "none");
+          $($current).attr("disabled", "none");
           alert("wrong!");
         }
       });

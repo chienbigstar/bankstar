@@ -8,6 +8,9 @@
       <%= f.label :url %>
       <%= f.text_field :url, class: "form-control" %>
       <br>
+      <%= f.label :reply_url %>
+      <%= f.text_field :reply_url, class: "form-control" %>
+      <br>
       <%= f.label :token %>
       <%= f.text_field :token, value: current_user.token, disabled: true,
         class: "form-control" %>

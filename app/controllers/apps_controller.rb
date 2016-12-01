@@ -22,6 +22,6 @@ class AppsController < ApplicationController
 
   private
   def app_params
-    params.required(:app).permit :user_id, :name, :url, :token
+    params.required(:app).permit :user_id, :name, :url, :reply_url, :token
   end
 end
