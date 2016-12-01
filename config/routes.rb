@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :show, :update]
   resources :apps, only: [:new, :create, :edit, :update]
   get 'orders/new'
-  resources :payments, only: [:new]
-  post 'payments/create', to: "payments#create"
+  resources :payments, only: [:new, :create]
+  post 'payments', to: "payments#create"
 end
