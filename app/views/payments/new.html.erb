@@ -1,4 +1,4 @@
-<%= form_for "payments" do |f| %>
+<%= form_for payments_path do |f| %>
   <%= f.hidden_field :order_id, value: @order.id %>
   <%= f.label @order.money %>
   <%= f.submit %>
