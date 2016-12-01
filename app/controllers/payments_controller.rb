@@ -5,6 +5,7 @@ class PaymentsController < ApplicationController
   before_action :authenticate_user!
   def new
     @order = Order.find_by public_token: params[:token]
+    @payment = Payment.new
     render html: "not found" unless @order
   end
 
